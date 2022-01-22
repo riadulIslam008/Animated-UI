@@ -61,49 +61,43 @@ class _CircleWithSvgState extends State<CircleWithSvg>
       },
       child: SizedBox(
         width: widget.circleRadius,
-        height: Get.height - 40 * 0.30,
+       // height: Get.height - 40 * 0.30,
         child: AnimatedBuilder(
           animation: animationController,
-          builder: (context, child) => Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Column(
-              children: [
-                Stack(
-                  children: [
-                    CircleUI(
-                      progressStroke: animationController.value,
-                    ),
-                    Positioned.fill(
-                      child: Center(
-                        child: FittedBox(
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 10),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: SvgPicture.asset(
-                                widget.itemAssets,
-                                color: widget.svgColor ==  AppColor.transparent ? null : widget.svgColor,
-                                height: 60,
-                              ),
-                            ),
+          builder: (context, child) => Column(
+            children: [
+              Stack(
+                children: [
+                  CircleUI(
+                    progressStroke: animationController.value,
+                  ),
+                  Positioned.fill(
+                    child: Center(
+                      child: FittedBox(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: SvgPicture.asset(
+                            widget.itemAssets,
+                            color: widget.svgColor ==  AppColor.transparent ? null : widget.svgColor,
+                            height: 60,
                           ),
                         ),
                       ),
                     ),
-                  ],
-                ),
-                const SizedBox(height: 5),
-                FittedBox(
-                  child: Text(
-                    widget.titleText.toUpperCase(),
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: AppColor.whiteColor,
-                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 5),
+              FittedBox(
+                child: Text(
+                  widget.titleText.toUpperCase(),
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: AppColor.whiteColor,
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

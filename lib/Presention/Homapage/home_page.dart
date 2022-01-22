@@ -12,19 +12,21 @@ class Homepage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColor.blurGrey,
-      body: PageFlipBuilder(
-        key: pageFlipKey,
-        frontBuilder: (_) => FlipPage(
-          key: UniqueKey(),
-          list: AppVeriable.itemListOne,
-          onFlip: () => pageFlipKey.currentState?.flip(),
-        ),
-        backBuilder: (_) => FlipPage(
-          key: UniqueKey(),
-          list: AppVeriable.itemListTwo,
-          onFlip: () => pageFlipKey.currentState?.flip(),
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: AppColor.blurGrey,
+        body: PageFlipBuilder(
+          key: pageFlipKey,
+          frontBuilder: (_) => FlipPage(
+            key: UniqueKey(),
+            list: AppVeriable.itemListOne,
+            onFlip: () => pageFlipKey.currentState?.flip(),
+          ),
+          backBuilder: (_) => FlipPage(
+            key: UniqueKey(),
+            list: AppVeriable.itemListTwo,
+            onFlip: () => pageFlipKey.currentState?.flip(),
+          ),
         ),
       ),
     );
@@ -40,27 +42,24 @@ class FlipPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       child: Column(
         children: [
-          SizedBox(
-            height: Get.height - 40,
-            child: GridView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: list.length,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 20,
-                childAspectRatio: 0.85,
-              ),
-              itemBuilder: (context, index) => CircleWithSvg(
-                circleRadius: Get.width * 0.25,
-                itemAssets: list[index].itemSvg,
-                onPressed: list[index].ontapRoutes,
-                titleText: list[index].itemName,
-                svgColor: list[index].svgColor,
-              ),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                if (list.length == 6) ...[
+                  rowSection(0, 1),
+                  rowSection(2, 3),
+                  rowSection(4, 5),
+                ] else ...[
+                  rowSection(0, 1),
+                  rowSection(2, 3),
+                  circleIndex(4),
+                ],
+              ],
             ),
           ),
           SizedBox(
@@ -78,6 +77,26 @@ class FlipPage extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  Row rowSection(fristIndex, secondIndex) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        circleIndex(fristIndex),
+        circleIndex(secondIndex),
+      ],
+    );
+  }
+
+  circleIndex(index) {
+    return CircleWithSvg(
+      circleRadius: Get.width * 0.40,
+      itemAssets: list[index].itemSvg,
+      onPressed: list[index].ontapRoutes,
+      titleText: list[index].itemName,
+      svgColor: list[index].svgColor,
     );
   }
 }
