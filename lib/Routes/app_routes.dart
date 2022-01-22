@@ -9,5 +9,5 @@ abstract class Routes {
   static const skills = "/skillsList";
   static const ticTacToeBoard = "/ticTacToeBoard";
   static const button3d = "/3dButton";
- // static const pandumlamClock = "/pandulamClock";
+  static const rotatedCircle = "/stickyBorder";
 }

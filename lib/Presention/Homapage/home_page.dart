@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:page_flip_builder/page_flip_builder.dart';
+import 'package:ui_generator_app/Core/App_Color/app_color.dart';
 import 'package:ui_generator_app/Core/App_Icon/app_icon.dart';
 import 'package:ui_generator_app/Core/App_Veriable/app_veriable.dart';
 import 'package:ui_generator_app/Presention/Homapage/Widgets/circle_and_svg.dart';
@@ -12,6 +13,7 @@ class Homepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColor.blurGrey,
       body: PageFlipBuilder(
         key: pageFlipKey,
         frontBuilder: (_) => FlipPage(
@@ -53,10 +55,11 @@ class FlipPage extends StatelessWidget {
                 childAspectRatio: 0.85,
               ),
               itemBuilder: (context, index) => CircleWithSvg(
-                circleRadius: 50,
+                circleRadius: Get.width * 0.25,
                 itemAssets: list[index].itemSvg,
                 onPressed: list[index].ontapRoutes,
                 titleText: list[index].itemName,
+                svgColor: list[index].svgColor,
               ),
             ),
           ),
@@ -64,7 +67,11 @@ class FlipPage extends StatelessWidget {
             height: 40,
             child: Center(
               child: IconButton(
-                icon: const Icon(AppIcon.flipIcon, size: 30),
+                icon: const Icon(
+                  AppIcon.flipIcon,
+                  size: 30,
+                  color: AppColor.whiteColor,
+                ),
                 onPressed: onFlip,
               ),
             ),

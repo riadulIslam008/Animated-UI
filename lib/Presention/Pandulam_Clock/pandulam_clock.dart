@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ui_generator_app/Presention/Pandulam_Clock/Widgets/clock_ui.dart';
@@ -73,14 +71,14 @@ class _PandulamClockState extends State<PandulamClock>
           ),
 
 //
-// ─── THIS IS TIME SHOW SCETION  TRY TO COMMENT OUT THIS SCETION CZ UI IS NOT PERFECT
+// ─── THIS IS TIME SHOW SECTION.  TRY TO COMMENT OUT THIS SECTION CZ UI IS NOT RESPONSIVE
 //
           Center(
             // top: Get.height / 2 - 73,
             // left: 83,
             child: CircleAvatar(
               backgroundColor: const Color(0xFF202F41),
-              radius: 70,
+              radius: 73,
               child: Stack(
                 children: [
                   Container(

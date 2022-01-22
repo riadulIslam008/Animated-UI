@@ -11,40 +11,42 @@ class CigareteView extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            RichText(
-              text: TextSpan(
-                style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w900,
-                    shadows: <Shadow>[
-                      Shadow(
-                        color: Color.fromRGBO(0, 0, 0, 0.20),
-                        offset: Offset(2, 5),
+            FittedBox(
+              child: RichText(
+                text: TextSpan(
+                  style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w900,
+                      shadows: <Shadow>[
+                        Shadow(
+                          color: Color.fromRGBO(0, 0, 0, 0.20),
+                          offset: Offset(2, 5),
+                        ),
+                      ]),
+                  children: <TextSpan>[
+                    TextSpan(
+                      text: "NOOOOO",
+                      style: TextStyle(
+                        color: Colors.orange[400],
+                        fontSize: 20,
                       ),
-                    ]),
-                children: <TextSpan>[
-                  TextSpan(
-                    text: "NOOOOO",
-                    style: TextStyle(
-                      color: Colors.orange[400],
-                      fontSize: 20,
                     ),
-                  ),
-                  TextSpan(
-                    text: "L".toLowerCase(),
-                    style: TextStyle(
-                      color: Colors.grey[400],
-                      fontSize: 20,
+                    TextSpan(
+                      text: "L".toLowerCase(),
+                      style: TextStyle(
+                        color: Colors.grey[400],
+                        fontSize: 20,
+                      ),
                     ),
-                  ),
-                  const TextSpan(
-                    text: "SMOOOOOOOOOKING",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
+                    const TextSpan(
+                      text: "SMOOOOOOOOOKING",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
             Container(

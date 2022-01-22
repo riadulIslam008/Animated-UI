@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:ui_generator_app/Core/App_Color/app_color.dart';
 
 class CircularDataVisulation extends StatefulWidget {
   const CircularDataVisulation({
@@ -18,7 +19,6 @@ class _CircularDataVisulationState extends State<CircularDataVisulation>
   @override
   void initState() {
     animationController = AnimationController(
-      
       vsync: this,
       duration: const Duration(milliseconds: 1000),
     );
@@ -30,41 +30,41 @@ class _CircularDataVisulationState extends State<CircularDataVisulation>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(193, 214, 233, 1),
+      backgroundColor: AppColor.skillsBackGroundColor,
       body: Center(
         child: LayoutBuilder(builder: (context, constraints) {
           return AnimatedBuilder(
-            animation: animationController,
-            builder: (context, child) {
-              return Container(
-                alignment: Alignment.center,
-                decoration: const BoxDecoration(
-                  color: Color.fromRGBO(193, 214, 233, 1),
-                  boxShadow: [
-                    BoxShadow(
-                      spreadRadius: -10,
-                      blurRadius: 17,
-                      color: Colors.white,
-                      offset: Offset(-5, -5),
+              animation: animationController,
+              builder: (context, child) {
+                return Container(
+                  alignment: Alignment.center,
+                  child: Container(
+                    height: constraints.maxHeight * 0.40,
+                    width: constraints.maxWidth * 0.40,
+                    decoration: const BoxDecoration(
+                      color: Color.fromRGBO(193, 214, 233, 1),
+                      shape: BoxShape.circle,
+                      boxShadow: [
+                        BoxShadow(
+                          spreadRadius: -10,
+                          blurRadius: 17,
+                          color: Colors.white,
+                          offset: Offset(-5, -5),
+                        ),
+                        BoxShadow(
+                          spreadRadius: -2,
+                          blurRadius: 10,
+                          offset: Offset(7, 7),
+                          color: Color.fromRGBO(146, 182, 216, 1),
+                        ),
+                      ],
                     ),
-                    BoxShadow(
-                      spreadRadius: -2,
-                      blurRadius: 10,
-                      offset: Offset(7, 7),
-                      color: Color.fromRGBO(146, 182, 216, 1),
+                    child: CustomPaint(
+                      painter: PieChart(animationController.value),
                     ),
-                  ],
-                ),
-                child: SizedBox(
-                  height: constraints.maxHeight * 0.40,
-                  width: constraints.maxWidth * 0.40,
-                  child: CustomPaint(
-                    painter: PieChart(animationController.value),
                   ),
-                ),
-              );
-            }
-          );
+                );
+              });
         }),
       ),
     );
@@ -93,11 +93,12 @@ class PieChart extends CustomPainter {
 
     for (var i = 0; i < kColorsList.length; i++) {
       final swapRadiant = kColorsList.elementAt(i);
-      final colorCapacity = swapRadiant["percentise"] / _total * 2 * pi * progressStroke;
+      final colorCapacity =
+          swapRadiant["percentise"] / _total * 2 * pi * progressStroke;
       _paint.color = swapRadiant["color"];
       canvas.drawArc(Rect.fromCircle(center: _center, radius: _radius),
-          startRadian , colorCapacity, false, _paint);
-      startRadian += colorCapacity ;
+          startRadian, colorCapacity, false, _paint);
+      startRadian += colorCapacity;
     }
   }
 

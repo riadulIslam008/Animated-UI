@@ -1,6 +1,11 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:ui_generator_app/Core/App_Color/app_color.dart';
+
+Color randomColor() {
+  return Colors.primaries[Random().nextInt(Colors.primaries.length)];
+}
 
 class SkillsBarList extends StatefulWidget {
   const SkillsBarList({Key? key}) : super(key: key);
@@ -10,97 +15,185 @@ class SkillsBarList extends StatefulWidget {
 }
 
 class _SkillsBarListState extends State<SkillsBarList>
-    with SingleTickerProviderStateMixin {
-  late AnimationController animationController;
+    with TickerProviderStateMixin {
+  late AnimationController animationControllerOne,
+      animationControllerTwo,
+      animationControllerThree,
+      animationControllerFour;
+  late Color colorOne, colorTwo, colorThree, colorFour;
 
   @override
   void initState() {
-    animationController =
-        AnimationController(vsync: this, duration: const Duration(seconds: 1));
-    animationController.forward();
+    colorOne = randomColor();
+    colorTwo = randomColor();
+    colorThree = randomColor();
+    colorFour = randomColor();
+    initanimationControllerOne();
+    initanimationControllerTwo();
+    initanimationControllerThree();
+    initanimationControllerFour();
     super.initState();
+  }
+
+  void initanimationControllerOne() {
+    animationControllerOne = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 500));
+    animationControllerOne.addStatusListener((status) {
+      if (status == AnimationStatus.completed) animationControllerOne.reverse();
+      if (status == AnimationStatus.dismissed) {
+        setState(() {
+          colorOne = randomColor();
+        });
+        animationControllerOne.forward();
+      }
+    });
+    animationControllerOne.forward();
+  }
+
+  void initanimationControllerTwo() {
+    animationControllerTwo = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 700));
+    animationControllerTwo.addStatusListener((status) {
+      if (status == AnimationStatus.completed) animationControllerTwo.reverse();
+      if (status == AnimationStatus.dismissed) {
+        setState(() {
+          colorTwo = randomColor();
+        });
+          animationControllerTwo.forward();
+      }
+    });
+    animationControllerTwo.forward();
+  }
+
+  void initanimationControllerThree() {
+    animationControllerThree = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 850));
+    animationControllerThree.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        animationControllerThree.reverse();
+      }
+      if (status == AnimationStatus.dismissed) {
+        setState(() {
+          colorThree = randomColor();
+        });
+        animationControllerThree.forward();
+      }
+    });
+    animationControllerThree.forward();
+  }
+
+  void initanimationControllerFour() {
+    animationControllerFour = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 1000));
+    animationControllerFour.addStatusListener((status) {
+      if (status == AnimationStatus.completed) animationControllerFour.reverse();
+      if (status == AnimationStatus.dismissed) {
+         setState(() {
+          colorFour = randomColor();
+        });
+        animationControllerFour.forward();
+      }
+    });
+    animationControllerFour.forward();
+  }
+
+  @override
+  void dispose() {
+    animationControllerOne.dispose();
+    animationControllerTwo.dispose();
+    animationControllerThree.dispose();
+    animationControllerFour.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.lightBackGround,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          AnimatedBuilder(
-              animation: animationController,
-              builder: (context, child) {
-                return Column(
-                  children: [
-                    SkillsItem(
-                        animationValue: animationController.value,
-                        skillsPercentage: 70),
-                    const SizedBox(height: 10),
-                    SkillsItem(
-                        animationValue: animationController.value,
-                        skillsPercentage: 80),
-                    const SizedBox(height: 10),
-                    SkillsItem(
-                        animationValue: animationController.value,
-                        skillsPercentage: 90),
-                    const SizedBox(height: 10),
-                    SkillsItem(
-                        animationValue: animationController.value,
-                        skillsPercentage: 100),
-                    const SizedBox(height: 10),
-                    SkillsItem(
-                        animationValue: animationController.value,
-                        skillsPercentage: 60),
-                  ],
-                );
-              }),
-        ],
+      backgroundColor: AppColor.skillsBackGroundColor,
+      body: Center(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            AnimatedBox(
+              controller: animationControllerOne,
+              color: colorOne,
+            ),
+            AnimatedBox(controller: animationControllerTwo, color: colorTwo),
+            AnimatedBox(
+              controller: animationControllerThree,
+              color: colorThree,
+            ),
+            AnimatedBox(controller: animationControllerFour, color: colorFour),
+          ],
+        ),
       ),
     );
   }
 }
 
-class SkillsItem extends StatelessWidget {
-  const SkillsItem(
-      {Key? key, required this.animationValue, required this.skillsPercentage})
+class AnimatedBox extends StatelessWidget {
+  const AnimatedBox({Key? key, required this.controller, required this.color})
       : super(key: key);
-  final double animationValue;
-  final int skillsPercentage;
+  final AnimationController controller;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
-      child: Stack(children: [
-        Container(
-          height: 15,
-          width: Get.width,
+    return AnimatedBuilder(
+      animation: controller,
+      builder: (context, child) {
+        return Container(
+          height: 200,
+          width: 40,
           decoration: BoxDecoration(
-            border: Border.all(
-              color: Colors.grey,
-              width: 2,
-            ),
-            borderRadius: BorderRadius.circular(12),
-          ),
-        ),
-        Row(
-          children: [
-            Container(
-              height: 15,
-              width: (Get.width - 30) * (skillsPercentage / 100) * animationValue,
-              decoration: BoxDecoration(
-                color: Colors.red,
-                borderRadius: BorderRadius.circular(12),
+            color: AppColor.skillsBackGroundColor,
+            borderRadius: BorderRadius.circular(30),
+            boxShadow: const [
+              BoxShadow(
+                offset: Offset(-4.5, -4.5),
+                blurRadius: 15,
+                color: Color.fromRGBO(0, 0, 0, 0.1),
               ),
-            ),
-            const Spacer(),
-          ],
-        ),
-        Center(
-          child: Text("$skillsPercentage %", style:const TextStyle(color: AppColor.lightBackGround)),
-        )
-      ]),
+              BoxShadow(
+                offset: Offset(4.5, 4.5),
+                blurRadius: 15,
+                color: Color.fromRGBO(0, 0, 0, 0.1),
+              ),
+            ],
+          ),
+          child: Column(
+            children: [
+              Expanded(
+                child: Container(
+                  constraints: const BoxConstraints(
+                    maxHeight: 160,
+                    minHeight: 0,
+                  ),
+                ),
+              ),
+              Container(
+                height: 200 * controller.value,
+                width: 40,
+                constraints: const BoxConstraints(minHeight: 40),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(
+                    32,
+                  ),
+                  color: color,
+                ),
+                child: Column(
+                  children: const [
+                    CircleAvatar(
+                      backgroundColor: AppColor.whiteColor,
+                      radius: 20,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

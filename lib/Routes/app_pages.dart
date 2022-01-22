@@ -8,6 +8,7 @@ import 'package:ui_generator_app/Presention/Discord_Ui/discord_ui.dart';
 import 'package:ui_generator_app/Presention/Factorial_Tree/facterial_tree.dart';
 import 'package:ui_generator_app/Presention/Homapage/home_page.dart';
 import 'package:ui_generator_app/Presention/Pandulam_Clock/pandulam_clock.dart';
+import 'package:ui_generator_app/Presention/Rotated_Circle/rotated_circle.dart';
 import 'package:ui_generator_app/Presention/Skills/animated_skills_bar.dart';
 import 'package:ui_generator_app/Presention/Tic_Tac_Toe_UI/game_board.dart';
 import 'package:ui_generator_app/Routes/app_routes.dart';
@@ -15,9 +16,9 @@ import 'package:ui_generator_app/Routes/app_routes.dart';
 class AppPages {
   static const initialRoutes = "/";
 
-  static final  routes = [
-    GetPage(name: initialRoutes, page: () =>  Homepage()),
-    GetPage(name: Routes.pandumlamClock, page: () =>const PandulamClock()),
+  static final routes = [
+    GetPage(name: initialRoutes, page: () => Homepage()),
+    GetPage(name: Routes.pandumlamClock, page: () => const PandulamClock()),
     GetPage(name: Routes.rollingCigarette, page: () => const BurningCigerate()),
     GetPage(
         name: Routes.circularChart, page: () => const CircularDataVisulation()),
@@ -28,5 +29,6 @@ class AppPages {
     GetPage(name: Routes.skills, page: () => const SkillsBarList()),
     GetPage(name: Routes.ticTacToeBoard, page: () => const GameBoard()),
     GetPage(name: Routes.button3d, page: () => const Button3d()),
+    GetPage(name: Routes.rotatedCircle, page: () => const RotatedCircle()),
   ];
 }

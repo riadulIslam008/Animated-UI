@@ -43,7 +43,7 @@ class _BurningCigerateState extends State<BurningCigerate> {
     return Scaffold(
       backgroundColor: const Color.fromRGBO(0, 0, 0, 0.50),
       body: Transform(
-        alignment: Alignment.centerLeft,
+        alignment: Alignment.center,
         transform: Matrix4.rotationZ(50),
         child: Center(
           child: ListWheelScrollView.useDelegate(

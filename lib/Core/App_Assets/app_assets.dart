@@ -10,6 +10,9 @@ class AppAssets {
   static const String searchUI = "assets/search-ui.svg";
   static const String showSkills = "assets/show-skills.svg";
   static const String ticTacToeBoard = "assets/tic-tac-toe-board.svg";
+  static const String button3D = "assets/button.svg";
+  // static const String coffee = "assets/coffee.svg";
+  static const String fencyCircle = "assets/fency-circle.svg";
   static const String pandulamImage = "assets/pandulam.png";
 
   static const List allIcons = [
@@ -22,6 +25,9 @@ class AppAssets {
     searchUI,
     showSkills,
     ticTacToeBoard,
+    button3D,
+    // coffee,
+    fencyCircle,
   ];
 
   static Future<void> preLoadSvg() async {

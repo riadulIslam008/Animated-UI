@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:ui_generator_app/Core/App_Color/app_color.dart';
 import 'package:ui_generator_app/Presention/Homapage/Widgets/custom_painter.dart';
 
 class CircleWithSvg extends StatefulWidget {
@@ -9,12 +10,13 @@ class CircleWithSvg extends StatefulWidget {
       required this.titleText,
       required this.onPressed,
       required this.circleRadius,
-      required this.itemAssets})
+      required this.itemAssets, required this.svgColor})
       : super(key: key);
   final String titleText;
   final String itemAssets;
   final String onPressed;
   final double circleRadius;
+  final Color svgColor;
 
   @override
   State<CircleWithSvg> createState() => _CircleWithSvgState();
@@ -30,8 +32,14 @@ class _CircleWithSvgState extends State<CircleWithSvg>
       vsync: this,
       duration: const Duration(milliseconds: 1000),
     );
-   
+
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    animationController.dispose();
+    super.dispose();
   }
 
   @override
@@ -53,6 +61,7 @@ class _CircleWithSvgState extends State<CircleWithSvg>
       },
       child: SizedBox(
         width: widget.circleRadius,
+        height: Get.height - 40 * 0.30,
         child: AnimatedBuilder(
           animation: animationController,
           builder: (context, child) => Padding(
@@ -73,9 +82,8 @@ class _CircleWithSvgState extends State<CircleWithSvg>
                               padding: const EdgeInsets.all(8.0),
                               child: SvgPicture.asset(
                                 widget.itemAssets,
-                                // color: Colors.lightGreen,
+                                color: widget.svgColor ==  AppColor.transparent ? null : widget.svgColor,
                                 height: 60,
-                                // width: 100,
                               ),
                             ),
                           ),
@@ -86,7 +94,13 @@ class _CircleWithSvgState extends State<CircleWithSvg>
                 ),
                 const SizedBox(height: 5),
                 FittedBox(
-                  child: Text(widget.titleText),
+                  child: Text(
+                    widget.titleText.toUpperCase(),
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: AppColor.whiteColor,
+                    ),
+                  ),
                 ),
               ],
             ),
