@@ -10,4 +10,5 @@ abstract class Routes {
   static const ticTacToeBoard = "/ticTacToeBoard";
   static const button3d = "/3dButton";
   static const rotatedCircle = "/stickyBorder";
+  static const codepage = "/showCode";
 }

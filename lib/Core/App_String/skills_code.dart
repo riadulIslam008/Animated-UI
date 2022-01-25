@@ -1,10 +1,6 @@
-import 'dart:math';
-
-import 'package:flutter/material.dart';
-import 'package:ui_generator_app/Core/App_Color/app_color.dart';
-import 'package:ui_generator_app/Core/App_String/Skills_code.dart';
-import 'package:ui_generator_app/Presention/CustomeAppBar/custome_appbar.dart';
-
+// ignore: file_names
+class Skills {
+  static const String code = '''
 Color randomColor() {
   return Colors.primaries[Random().nextInt(Colors.primaries.length)];
 }
@@ -111,10 +107,7 @@ class _SkillsBarListState extends State<SkillsBarList>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.skillsBackGroundColor,
-       appBar: const CustomeAppBar(
-         uiCode: Skills.code,
-       ),
+      backgroundColor: AppColor.skillsBackGroundColor, //Color(0xFFEDF1F4);
       body: Center(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -201,4 +194,6 @@ class AnimatedBox extends StatelessWidget {
       },
     );
   }
+}
+  ''';
 }

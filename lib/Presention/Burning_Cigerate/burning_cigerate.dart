@@ -1,7 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:ui_generator_app/Core/App_String/buring_cigerette.dart';
 import 'package:ui_generator_app/Presention/Burning_Cigerate/Widgets/cigerate_view.dart';
+import 'package:ui_generator_app/Presention/CustomeAppBar/custome_appbar.dart';
 
 class BurningCigerate extends StatefulWidget {
   const BurningCigerate({Key? key}) : super(key: key);
@@ -34,6 +36,7 @@ class _BurningCigerateState extends State<BurningCigerate> {
 
   @override
   void dispose() {
+    _controller.dispose();
     _timer.cancel();
     super.dispose();
   }
@@ -42,6 +45,9 @@ class _BurningCigerateState extends State<BurningCigerate> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromRGBO(0, 0, 0, 0.50),
+      appBar: const CustomeAppBar(
+        uiCode: BurningCigerette.code,
+      ),
       body: Transform(
         alignment: Alignment.center,
         transform: Matrix4.rotationZ(50),
@@ -72,4 +78,3 @@ class _BurningCigerateState extends State<BurningCigerate> {
     );
   }
 }
-

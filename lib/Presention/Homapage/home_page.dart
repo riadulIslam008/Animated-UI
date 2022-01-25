@@ -42,13 +42,13 @@ class FlipPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      padding: const EdgeInsets.symmetric(vertical: 10),
       child: Column(
         children: [
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 if (list.length == 6) ...[
                   rowSection(0, 1),
@@ -57,7 +57,10 @@ class FlipPage extends StatelessWidget {
                 ] else ...[
                   rowSection(0, 1),
                   rowSection(2, 3),
-                  circleIndex(4),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15 ),
+                    child: circleIndex(4),
+                  ),
                 ],
               ],
             ),
@@ -82,7 +85,7 @@ class FlipPage extends StatelessWidget {
 
   Row rowSection(fristIndex, secondIndex) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         circleIndex(fristIndex),
         circleIndex(secondIndex),

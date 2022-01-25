@@ -1,12 +1,6 @@
-import 'dart:ui';
-
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:ui_generator_app/Core/App_Color/app_color.dart';
-import 'package:ui_generator_app/Core/App_Icon/app_icon.dart';
-import 'package:ui_generator_app/Core/App_String/discorUI_code.dart';
-import 'package:ui_generator_app/Presention/CustomeAppBar/custome_appbar.dart';
-
+// ignore: file_names
+class Discordui {
+  static const String code = '''
 class DiscordUI extends StatefulWidget {
   const DiscordUI({Key? key}) : super(key: key);
 
@@ -27,9 +21,6 @@ class _DiscordUIState extends State<DiscordUI> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.greyColor300,
-       appBar:  const CustomeAppBar(
-         uiCode: Discordui.code,
-       ),
       body: SafeArea(
         child: LayoutBuilder(
           builder: (context, constraints) {
@@ -293,4 +284,6 @@ class _DiscordUIState extends State<DiscordUI> {
           : const SizedBox.shrink(),
     );
   }
+}
+  ''';
 }

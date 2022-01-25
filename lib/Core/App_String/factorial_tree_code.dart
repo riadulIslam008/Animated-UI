@@ -1,8 +1,5 @@
-import 'dart:math' as math;
-import 'package:flutter/material.dart';
-import 'package:ui_generator_app/Core/App_String/factorial_tree_code.dart';
-import 'package:ui_generator_app/Presention/CustomeAppBar/custome_appbar.dart';
-
+class Factorial {
+  static const String code = '''
 class FacterialTree extends StatelessWidget {
   const FacterialTree({Key? key}) : super(key: key);
 
@@ -10,9 +7,6 @@ class FacterialTree extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black87,
-       appBar:  const CustomeAppBar(
-         uiCode: Factorial.code,
-       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,         
         children: [
@@ -74,4 +68,6 @@ void drawFunction(
     drawFunction(
         canvas, _paint, lineLength, x2, y2, depth - 1, angle + offset, offset);
   }
+}
+  ''';
 }

@@ -1,8 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:ui_generator_app/Core/App_Color/app_color.dart';
-import 'package:ui_generator_app/Core/App_String/curved_ui_code.dart';
-import 'package:ui_generator_app/Presention/CustomeAppBar/custome_appbar.dart';
-
+class CurvedUI {
+  static const String code = '''
 class BackGroundUI extends StatelessWidget {
   const BackGroundUI({Key? key}) : super(key: key);
 
@@ -10,7 +7,8 @@ class BackGroundUI extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
        appBar: const CustomeAppBar(
-         uiCode: CurvedUI.code,
+         pageName: "",
+         uiCode: "",
        ),
       body: LayoutBuilder(
         builder: (context, constraints) {
@@ -58,4 +56,6 @@ class BackGroundUI extends StatelessWidget {
       ),
     );
   }
+}
+  ''';
 }

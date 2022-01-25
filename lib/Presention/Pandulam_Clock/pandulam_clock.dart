@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ui_generator_app/Core/App_Color/app_color.dart';
+import 'package:ui_generator_app/Core/App_String/pandulam_code.dart';
+import 'package:ui_generator_app/Presention/CustomeAppBar/custome_appbar.dart';
 import 'package:ui_generator_app/Presention/Pandulam_Clock/Widgets/clock_ui.dart';
 import 'package:ui_generator_app/Presention/Pandulam_Clock/Widgets/pandulam_ui.dart';
 
@@ -14,7 +17,7 @@ class _PandulamClockState extends State<PandulamClock>
     with SingleTickerProviderStateMixin {
   final _top = Get.height / 2;
 
-  final TextStyle _style =const TextStyle(
+  final TextStyle _style = const TextStyle(
     color: Colors.white,
   );
 
@@ -53,7 +56,10 @@ class _PandulamClockState extends State<PandulamClock>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF202F41),
+      backgroundColor: AppColor.pandulamPageBackground, //Color(0xFF202F41),
+      appBar:  const CustomeAppBar(
+         uiCode: PandulamCode.pandulamAllCode,
+       ),
       body: Stack(
         alignment: Alignment.center,
         children: [
@@ -64,18 +70,12 @@ class _PandulamClockState extends State<PandulamClock>
                 alignment: const FractionalOffset(0.5, 0.0),
                 transform: Matrix4.rotationZ(animation.value),
                 child: const Center(
-                  child: PandulamUI(),
+                  child: PandulamUI(screenHeight: 160),
                 ),
               ),
             ],
           ),
-
-//
-// ─── THIS IS TIME SHOW SECTION.  TRY TO COMMENT OUT THIS SECTION CZ UI IS NOT RESPONSIVE
-//
           Center(
-            // top: Get.height / 2 - 73,
-            // left: 83,
             child: CircleAvatar(
               backgroundColor: const Color(0xFF202F41),
               radius: 73,
@@ -103,7 +103,6 @@ class _PandulamClockState extends State<PandulamClock>
               ),
             ),
           ),
-
           Center(
             child: Container(
                 alignment: const FractionalOffset(0.5, 0.5),

@@ -1,9 +1,5 @@
-import 'dart:math';
-
-import 'package:flutter/material.dart';
-import 'package:ui_generator_app/Core/App_String/chartui_code.dart';
-import 'package:ui_generator_app/Presention/CustomeAppBar/custome_appbar.dart';
-
+class ChartUI {
+  static const String code = '''
 class CircularDataVisulation extends StatefulWidget {
   const CircularDataVisulation({
     Key? key,
@@ -31,9 +27,6 @@ class _CircularDataVisulationState extends State<CircularDataVisulation>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       appBar:  const CustomeAppBar(
-         uiCode: ChartUI.code,
-       ),
       body: Center(
         child: LayoutBuilder(builder: (context, constraints) {
           return AnimatedBuilder(
@@ -135,3 +128,5 @@ final List kColorsList = [
     "percentise": 20,
   },
 ];
+  ''';
+}

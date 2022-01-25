@@ -1,11 +1,5 @@
-// ignore_for_file: file_names
-
-import 'package:flutter/material.dart';
-import 'package:ui_generator_app/Core/App_Color/app_color.dart';
-import 'package:ui_generator_app/Core/App_String/tictactoe_code.dart';
-import 'package:ui_generator_app/Presention/CustomeAppBar/custome_appbar.dart';
-import 'package:ui_generator_app/Presention/Tic_Tac_Toe_UI/box_container.dart';
-
+class TicTacToe {
+  static const String code = '''
 class GameBoard extends StatelessWidget {
   const GameBoard({Key? key}) : super(key: key);
 
@@ -13,9 +7,6 @@ class GameBoard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.whiteColor,
-      appBar: const CustomeAppBar(
-        uiCode: TicTacToe.code,
-      ),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -56,4 +47,42 @@ class GameBoard extends StatelessWidget {
       ),
     );
   }
+}
+
+class BoxContainer extends StatelessWidget {
+  BoxContainer(
+      {Key? key,
+      this.bottomWidth = true,
+      this.rightWidth = true,
+      required this.index})
+      : super(key: key);
+
+  final bool bottomWidth;
+  final bool rightWidth;
+  final int index;
+  final Color blackColor = Colors.black;
+  final Color transparent = Colors.transparent;
+
+  final double _width = 5;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        height: 90,
+        width: 90,
+        decoration: BoxDecoration(
+          border: Border(
+            right: BorderSide(
+              color: rightWidth ? blackColor : transparent,
+              width: _width,
+            ),
+            bottom: BorderSide(
+              color: bottomWidth ? blackColor : transparent,
+              width: _width,
+            ),
+          ),
+        ),
+    );
+  }
+}
+  ''';
 }

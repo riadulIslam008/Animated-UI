@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppColor {
+  static const Color pandulamPageBackground =  Color(0xFF202F41);
   static const Color blurGrey = Color(0xFF263238);
   static const Color whiteColor = Colors.white;
   static const Color greenColor = Color(0xFF00C853);

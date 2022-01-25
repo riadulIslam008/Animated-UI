@@ -1,9 +1,124 @@
-import 'dart:async';
-import 'dart:math';
+class PandulamCode {
+  static const pandulamAllCode = '''
+  //Import Packages
+  class PandulamClock extends StatefulWidget {
+  const PandulamClock({Key? key}) : super(key: key);
 
-import 'package:flutter/material.dart';
+  @override
+  State<PandulamClock> createState() => _PandulamClockState();
+}
 
-class ClockUI extends StatefulWidget {
+class _PandulamClockState extends State<PandulamClock>
+    with SingleTickerProviderStateMixin {
+  final _top = Get.height / 2;
+
+  final TextStyle _style = const TextStyle(
+    color: Colors.white,
+  );
+
+  late Animation animation;
+  late AnimationController _animationController;
+
+  animationSection() {
+    _animationController =
+        AnimationController(vsync: this, duration: const Duration(seconds: 1));
+    _animationController.addListener(() {
+      if (animation.isCompleted) {
+        _animationController.reverse();
+      } else if (animation.isDismissed) {
+        _animationController.forward();
+      }
+      setState(() {});
+    });
+    _animationController.forward();
+    animation =
+        CurvedAnimation(parent: _animationController, curve: Curves.linear);
+    animation = Tween(begin: -0.5, end: 0.5).animate(_animationController);
+  }
+
+  @override
+  void initState() {
+    animationSection();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: AppColor.pandulamPageBackground, //Color(0xFF202F41),
+      body: Stack(
+        alignment: Alignment.center,
+        children: [
+          Column(
+            children: [
+              SizedBox(height: _top),
+              Transform(
+                alignment: const FractionalOffset(0.5, 0.0),
+                transform: Matrix4.rotationZ(animation.value),
+                child: const Center(
+                  child: PandulamUI(screenHeight: 160),
+                ),
+              ),
+            ],
+          ),
+          Center(
+            child: CircleAvatar(
+              backgroundColor: const Color(0xFF202F41),
+              radius: 73,
+              child: Stack(
+                children: [
+                  Container(
+                    alignment: Alignment.topCenter,
+                    child: Text("12", style: _style),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.only(right: 5),
+                    alignment: Alignment.centerRight,
+                    child: Text("3", style: _style),
+                  ),
+                  Container(
+                    alignment: Alignment.bottomCenter,
+                    child: Text("6", style: _style),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.only(left: 5),
+                    alignment: Alignment.centerLeft,
+                    child: Text("9", style: _style),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Center(
+            child: Container(
+                alignment: const FractionalOffset(0.5, 0.5),
+                child: const ClockUI()),
+          ),
+        ],
+      ),
+    );
+  }
+}
+                class PandulamUI extends StatelessWidget {
+                  const PandulamUI({Key? key, required this.screenHeight}) : super(key: key);
+                   final double screenHeight;
+
+                  @override
+                    Widget build(BuildContext context) {
+                        return SizedBox(
+                            height: screenHeight,
+                          child: Image.asset(AppAssets.pandulamImage), //use your own assets name
+                               );
+                              }
+                            }
+
+      class ClockUI extends StatefulWidget {
   const ClockUI({Key? key}) : super(key: key);
 
   @override
@@ -11,16 +126,17 @@ class ClockUI extends StatefulWidget {
 }
 
 class _ClockUIState extends State<ClockUI> {
+
   late Timer _timer;
   @override
   void initState() {
-    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+   _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       setState(() {});
     });
     super.initState();
   }
 
-  @override
+    @override
   void dispose() {
     _timer.cancel();
     super.dispose();
@@ -48,7 +164,7 @@ class ClockPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    //  print(size);
+  //  print(size);
     //
     // ─── CLOCK CIRCLE PAINT ──────────────────────────────────────────
     //
@@ -146,4 +262,6 @@ class ClockPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(ClockPainter oldDelegate) => true;
+}
+  ''';
 }

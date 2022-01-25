@@ -9,6 +9,7 @@ import 'package:ui_generator_app/Presention/Factorial_Tree/facterial_tree.dart';
 import 'package:ui_generator_app/Presention/Homapage/home_page.dart';
 import 'package:ui_generator_app/Presention/Pandulam_Clock/pandulam_clock.dart';
 import 'package:ui_generator_app/Presention/Rotated_Circle/rotated_circle.dart';
+import 'package:ui_generator_app/Presention/Show_Code/code.dart';
 import 'package:ui_generator_app/Presention/Skills/animated_skills_bar.dart';
 import 'package:ui_generator_app/Presention/Tic_Tac_Toe_UI/game_board.dart';
 import 'package:ui_generator_app/Routes/app_routes.dart';
@@ -30,5 +31,6 @@ class AppPages {
     GetPage(name: Routes.ticTacToeBoard, page: () => const GameBoard()),
     GetPage(name: Routes.button3d, page: () => const Button3d()),
     GetPage(name: Routes.rotatedCircle, page: () => const RotatedCircle()),
+    GetPage(name: Routes.codepage, page: () => ShowCode()),
   ];
 }

@@ -1,10 +1,5 @@
-import 'dart:math';
-
-import 'package:flutter/material.dart';
-import 'package:ui_generator_app/Core/App_Color/app_color.dart';
-import 'package:ui_generator_app/Core/App_String/fency_border.dart';
-import 'package:ui_generator_app/Presention/CustomeAppBar/custome_appbar.dart';
-
+class Fency {
+  static const String code = '''
 const double _height = 200;
 
 class RotatedCircle extends StatefulWidget {
@@ -73,9 +68,6 @@ class _RotatedCircleState extends State<RotatedCircle>
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.blurGrey,
-       appBar:  const CustomeAppBar(
-         uiCode: Fency.code,
-       ),
       body: Center(
         child: SizedBox(
           width: _height,
@@ -137,4 +129,6 @@ class FencyBorder extends StatelessWidget {
       ),
     );
   }
+}
+  ''';
 }
