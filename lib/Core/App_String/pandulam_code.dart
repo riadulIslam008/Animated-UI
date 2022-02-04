@@ -1,6 +1,7 @@
 class PandulamCode {
   static const pandulamAllCode = '''
-  //Import Packages
+  //  import 'package:flutter/material.dart
+
   class PandulamClock extends StatefulWidget {
   const PandulamClock({Key? key}) : super(key: key);
 

@@ -48,13 +48,13 @@ class _ShowCodeState extends State<ShowCode> {
               //controller: _controller,
               child: Container(
                 margin: const EdgeInsets.symmetric(horizontal: 15),
-                padding: const EdgeInsets.symmetric(vertical: 15),
+                padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
                 color: AppColor.pandulamPageBackground,
                 child: Text(
                   uiCode,
                   style: const TextStyle(
                     color: AppColor.whiteColor,
-                    fontSize: 10,
+                    fontSize: 12,
                   ),
                 ),
               ),

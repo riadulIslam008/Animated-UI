@@ -1,9 +1,13 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:ui_generator_app/Core/Model/item_model.dart';
 
 class CircleUI extends StatelessWidget {
-  const CircleUI({Key? key, required this.progressStroke}) : super(key: key);
+  const CircleUI(
+      {Key? key, required this.progressStroke, required this.itemModel})
+      : super(key: key);
   final double progressStroke;
+  final ItemModel itemModel;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +17,8 @@ class CircleUI extends StatelessWidget {
         painter: CustomePainterImpl(
             progressStroke: progressStroke,
             taskCompleteColor: Colors.teal,
-            taskNotCompleteColor: Colors.grey),
+            taskNotCompleteColor: Colors.grey,
+            itemModel: itemModel),
       ),
     );
   }
@@ -23,10 +28,12 @@ class CustomePainterImpl extends CustomPainter {
   CustomePainterImpl(
       {required this.progressStroke,
       required this.taskCompleteColor,
-      required this.taskNotCompleteColor});
+      required this.taskNotCompleteColor,
+      required this.itemModel});
   final double progressStroke;
   final Color taskCompleteColor;
   final Color taskNotCompleteColor;
+  final ItemModel itemModel;
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -36,7 +43,8 @@ class CustomePainterImpl extends CustomPainter {
     final _radius =
         isCompleted ? (size.width - _strokeWidth) / 2 : size.width / 2;
 
-    if (isCompleted) {
+
+    if (isCompleted ) {
       final backgroundPaint = Paint()
         ..isAntiAlias = true
         ..strokeWidth = _strokeWidth

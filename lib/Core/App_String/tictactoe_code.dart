@@ -1,5 +1,8 @@
 class TicTacToe {
   static const String code = '''
+
+  import 'package:flutter/material.dart
+
 class GameBoard extends StatelessWidget {
   const GameBoard({Key? key}) : super(key: key);
 

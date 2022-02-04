@@ -9,13 +9,13 @@ class CigareteView extends StatelessWidget {
       child: SizedBox(
         height: 20,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             FittedBox(
               child: RichText(
                 text: TextSpan(
                   style: const TextStyle(
-                      fontSize: 20,
+                      fontSize: 18,
                       fontWeight: FontWeight.w900,
                       shadows: <Shadow>[
                         Shadow(
@@ -28,21 +28,21 @@ class CigareteView extends StatelessWidget {
                       text: "NOOOOO",
                       style: TextStyle(
                         color: Colors.orange[400],
-                        fontSize: 20,
+                        fontSize: 18,
                       ),
                     ),
                     TextSpan(
                       text: "L".toLowerCase(),
                       style: TextStyle(
                         color: Colors.grey[400],
-                        fontSize: 20,
+                        fontSize: 18,
                       ),
                     ),
                     const TextSpan(
                       text: "SMOOOOOOOOOKING",
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 20,
+                        fontSize: 18,
                       ),
                     ),
                   ],
@@ -51,7 +51,7 @@ class CigareteView extends StatelessWidget {
             ),
             Container(
               alignment: Alignment.center,
-              height: 20,
+              height: 18,
               width: 6,
               decoration: const BoxDecoration(
                 boxShadow: <BoxShadow>[
@@ -77,7 +77,7 @@ class CigareteView extends StatelessWidget {
                       blurRadius: 0, spreadRadius: 2),
                   BoxShadow(
                       color: Color(0x99999999),
-                      offset: Offset(20, 0),
+                      offset: Offset(18, 0),
                       blurRadius: 2,spreadRadius: 2),
                 ],
               ),

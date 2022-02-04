@@ -1,5 +1,8 @@
 class CurvedUI {
   static const String code = '''
+
+  import 'package:flutter/material.dart
+
 class BackGroundUI extends StatelessWidget {
   const BackGroundUI({Key? key}) : super(key: key);
 

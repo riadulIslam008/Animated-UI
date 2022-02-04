@@ -1,5 +1,8 @@
 class SearchUI {
   static const String code = '''
+
+  import 'package:flutter/material.dart
+
 class Search extends StatelessWidget {
   const Search({Key? key}) : super(key: key);
 

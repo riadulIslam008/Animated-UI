@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class BoxContainer extends StatelessWidget {
-  BoxContainer(
+ const BoxContainer(
       {Key? key,
       this.bottomWidth = true,
       this.rightWidth = true,

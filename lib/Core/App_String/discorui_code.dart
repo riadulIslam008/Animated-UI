@@ -1,6 +1,9 @@
 // ignore: file_names
 class Discordui {
   static const String code = '''
+
+  import 'package:flutter/material.dart
+
 class DiscordUI extends StatefulWidget {
   const DiscordUI({Key? key}) : super(key: key);
 

@@ -22,7 +22,7 @@ class CustomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                 Get.toNamed(Routes.codepage, arguments: [uiCode]);
               },
               child: const Text(
-                "<CODE>",
+                "< CODE />",
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontSize: 20,

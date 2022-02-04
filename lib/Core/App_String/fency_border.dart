@@ -1,5 +1,8 @@
 class Fency {
   static const String code = '''
+
+  import 'package:flutter/material.dart
+
 const double _height = 200;
 
 class RotatedCircle extends StatefulWidget {

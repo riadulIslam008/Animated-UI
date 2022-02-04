@@ -48,29 +48,32 @@ class _BurningCigerateState extends State<BurningCigerate> {
       appBar: const CustomeAppBar(
         uiCode: BurningCigerette.code,
       ),
-      body: Transform(
-        alignment: Alignment.center,
-        transform: Matrix4.rotationZ(50),
-        child: Center(
-          child: ListWheelScrollView.useDelegate(
-            controller: _controller,
-            physics: const AlwaysScrollableScrollPhysics(),
-            itemExtent: 80,
-            perspective: 0.007,
-            diameterRatio: 0.1,
-            onSelectedItemChanged: (index) {
-              index++;
-            },
-            childDelegate: ListWheelChildLoopingListDelegate(
-              children: [
-                for (var i = 0; i < 10; i++)
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const <Widget>[
-                      CigareteView(),
-                    ],
-                  ),
-              ],
+      body: Padding(
+        padding: const EdgeInsets.only(left: 8.0),
+        child: Transform(
+          alignment: Alignment.center,
+          transform: Matrix4.rotationZ(50),
+          child: Center(
+            child: ListWheelScrollView.useDelegate(
+              controller: _controller,
+              physics: const AlwaysScrollableScrollPhysics(),
+              itemExtent: 80,
+              perspective: 0.007,
+              diameterRatio: 0.1,
+              onSelectedItemChanged: (index) {
+                index++;
+              },
+              childDelegate: ListWheelChildLoopingListDelegate(
+                children: [
+                  for (var i = 0; i < 10; i++)
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const <Widget>[
+                        CigareteView(),
+                      ],
+                    ),
+                ],
+              ),
             ),
           ),
         ),

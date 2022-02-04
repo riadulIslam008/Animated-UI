@@ -18,7 +18,7 @@ class AppPages {
   static const initialRoutes = "/";
 
   static final routes = [
-    GetPage(name: initialRoutes, page: () => Homepage()),
+    GetPage(name: initialRoutes, page: () =>const Homepage()),
     GetPage(name: Routes.pandumlamClock, page: () => const PandulamClock()),
     GetPage(name: Routes.rollingCigarette, page: () => const BurningCigerate()),
     GetPage(
@@ -31,6 +31,6 @@ class AppPages {
     GetPage(name: Routes.ticTacToeBoard, page: () => const GameBoard()),
     GetPage(name: Routes.button3d, page: () => const Button3d()),
     GetPage(name: Routes.rotatedCircle, page: () => const RotatedCircle()),
-    GetPage(name: Routes.codepage, page: () => ShowCode()),
+    GetPage(name: Routes.codepage, page: () =>const ShowCode()),
   ];
 }

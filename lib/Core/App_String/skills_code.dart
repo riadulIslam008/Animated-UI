@@ -1,6 +1,9 @@
 // ignore: file_names
 class Skills {
   static const String code = '''
+
+  import 'package:flutter/material.dart
+
 Color randomColor() {
   return Colors.primaries[Random().nextInt(Colors.primaries.length)];
 }

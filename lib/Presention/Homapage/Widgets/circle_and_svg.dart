@@ -2,21 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:ui_generator_app/Core/App_Color/app_color.dart';
+import 'package:ui_generator_app/Core/Model/item_model.dart';
 import 'package:ui_generator_app/Presention/Homapage/Widgets/custom_painter.dart';
 
 class CircleWithSvg extends StatefulWidget {
-  const CircleWithSvg(
-      {Key? key,
-      required this.titleText,
-      required this.onPressed,
-      required this.circleRadius,
-      required this.itemAssets, required this.svgColor})
-      : super(key: key);
-  final String titleText;
-  final String itemAssets;
-  final String onPressed;
-  final double circleRadius;
-  final Color svgColor;
+  const CircleWithSvg({
+    Key? key,
+    required this.itemModel,
+  }) : super(key: key);
+
+  final ItemModel itemModel;
 
   @override
   State<CircleWithSvg> createState() => _CircleWithSvgState();
@@ -45,7 +40,7 @@ class _CircleWithSvgState extends State<CircleWithSvg>
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Get.toNamed(widget.onPressed),
+      onTap: () => Get.toNamed(widget.itemModel.ontapRoutes),
       onLongPressDown: (_) {
         animationController.forward();
       },
@@ -60,8 +55,7 @@ class _CircleWithSvgState extends State<CircleWithSvg>
         }
       },
       child: SizedBox(
-        width: widget.circleRadius,
-       // height: Get.height - 40 * 0.30,
+        width: Get.width * 0.40,
         child: AnimatedBuilder(
           animation: animationController,
           builder: (context, child) => Column(
@@ -70,6 +64,7 @@ class _CircleWithSvgState extends State<CircleWithSvg>
                 children: [
                   CircleUI(
                     progressStroke: animationController.value,
+                    itemModel: widget.itemModel,
                   ),
                   Positioned.fill(
                     child: Center(
@@ -77,8 +72,11 @@ class _CircleWithSvgState extends State<CircleWithSvg>
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: SvgPicture.asset(
-                            widget.itemAssets,
-                            color: widget.svgColor ==  AppColor.transparent ? null : widget.svgColor,
+                            widget.itemModel.itemSvg,
+                            color: widget.itemModel.svgColor ==
+                                    AppColor.transparent
+                                ? null
+                                : widget.itemModel.svgColor,
                             height: 60,
                           ),
                         ),
@@ -90,7 +88,7 @@ class _CircleWithSvgState extends State<CircleWithSvg>
               const SizedBox(height: 5),
               FittedBox(
                 child: Text(
-                  widget.titleText.toUpperCase(),
+                  widget.itemModel.itemName.toUpperCase(),
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     color: AppColor.whiteColor,

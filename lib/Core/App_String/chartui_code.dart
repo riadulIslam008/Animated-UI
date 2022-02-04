@@ -1,5 +1,8 @@
 class ChartUI {
   static const String code = '''
+
+  import 'package:flutter/material.dart
+
 class CircularDataVisulation extends StatefulWidget {
   const CircularDataVisulation({
     Key? key,

@@ -1,5 +1,8 @@
 class Factorial {
   static const String code = '''
+
+  import 'package:flutter/material.dart
+
 class FacterialTree extends StatelessWidget {
   const FacterialTree({Key? key}) : super(key: key);
 

@@ -1,5 +1,7 @@
 class BurningCigerette {
   static const String code = '''
+  import 'package:flutter/material.dart
+
 class BurningCigerate extends StatefulWidget {
   const BurningCigerate({Key? key}) : super(key: key);
 
@@ -40,28 +42,29 @@ class _BurningCigerateState extends State<BurningCigerate> {
     return Scaffold(
       backgroundColor: const Color.fromRGBO(0, 0, 0, 0.50),
       body: Transform(
-        alignment: Alignment.center,
-        transform: Matrix4.rotationZ(50),
-        child: Center(
-          child: ListWheelScrollView.useDelegate(
-            controller: _controller,
-            physics: const AlwaysScrollableScrollPhysics(),
-            itemExtent: 80,
-            perspective: 0.007,
-            diameterRatio: 0.1,
-            onSelectedItemChanged: (index) {
-              index++;
-            },
-            childDelegate: ListWheelChildLoopingListDelegate(
-              children: [
-                for (var i = 0; i < 10; i++)
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const <Widget>[
-                      CigareteView(),
-                    ],
-                  ),
-              ],
+          alignment: Alignment.center,
+          transform: Matrix4.rotationZ(50),
+          child: Center(
+            child: ListWheelScrollView.useDelegate(
+              controller: _controller,
+              physics: const AlwaysScrollableScrollPhysics(),
+              itemExtent: 80,
+              perspective: 0.007,
+              diameterRatio: 0.1,
+              onSelectedItemChanged: (index) {
+                index++;
+              },
+              childDelegate: ListWheelChildLoopingListDelegate(
+                children: [
+                  for (var i = 0; i < 10; i++)
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const <Widget>[
+                        CigareteView(),
+                      ],
+                    ),
+                ],
+              ),
             ),
           ),
         ),
@@ -79,13 +82,12 @@ class CigareteView extends StatelessWidget {
       child: SizedBox(
         height: 20,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             FittedBox(
               child: RichText(
                 text: TextSpan(
                   style: const TextStyle(
-                      fontSize: 20,
+                      fontSize: 18,
                       fontWeight: FontWeight.w900,
                       shadows: <Shadow>[
                         Shadow(
@@ -98,21 +100,21 @@ class CigareteView extends StatelessWidget {
                       text: "NOOOOO",
                       style: TextStyle(
                         color: Colors.orange[400],
-                        fontSize: 20,
+                        fontSize: 18,
                       ),
                     ),
                     TextSpan(
                       text: "L".toLowerCase(),
                       style: TextStyle(
                         color: Colors.grey[400],
-                        fontSize: 20,
+                        fontSize: 18,
                       ),
                     ),
                     const TextSpan(
                       text: "SMOOOOOOOOOKING",
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 20,
+                        fontSize: 18,
                       ),
                     ),
                   ],
@@ -121,7 +123,7 @@ class CigareteView extends StatelessWidget {
             ),
             Container(
               alignment: Alignment.center,
-              height: 20,
+              height: 18,
               width: 6,
               decoration: const BoxDecoration(
                 boxShadow: <BoxShadow>[
@@ -147,7 +149,7 @@ class CigareteView extends StatelessWidget {
                       blurRadius: 0, spreadRadius: 2),
                   BoxShadow(
                       color: Color(0x99999999),
-                      offset: Offset(20, 0),
+                      offset: Offset(18, 0),
                       blurRadius: 2,spreadRadius: 2),
                 ],
               ),

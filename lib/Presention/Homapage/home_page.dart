@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:page_flip_builder/page_flip_builder.dart';
 import 'package:ui_generator_app/Core/App_Color/app_color.dart';
 import 'package:ui_generator_app/Core/App_Icon/app_icon.dart';
 import 'package:ui_generator_app/Core/App_Veriable/app_veriable.dart';
 import 'package:ui_generator_app/Presention/Homapage/Widgets/circle_and_svg.dart';
 
-class Homepage extends StatelessWidget {
-  Homepage({Key? key}) : super(key: key);
+class Homepage extends StatefulWidget {
+ const Homepage({Key? key}) : super(key: key);
+
+  @override
+  State<Homepage> createState() => _HomepageState();
+}
+
+class _HomepageState extends State<Homepage> {
   final pageFlipKey = GlobalKey<PageFlipBuilderState>();
 
   @override
@@ -18,12 +23,12 @@ class Homepage extends StatelessWidget {
         body: PageFlipBuilder(
           key: pageFlipKey,
           frontBuilder: (_) => FlipPage(
-            key: UniqueKey(),
+            key:const ValueKey(1),
             list: AppVeriable.itemListOne,
             onFlip: () => pageFlipKey.currentState?.flip(),
           ),
           backBuilder: (_) => FlipPage(
-            key: UniqueKey(),
+            key: const ValueKey(2),
             list: AppVeriable.itemListTwo,
             onFlip: () => pageFlipKey.currentState?.flip(),
           ),
@@ -95,11 +100,7 @@ class FlipPage extends StatelessWidget {
 
   circleIndex(index) {
     return CircleWithSvg(
-      circleRadius: Get.width * 0.40,
-      itemAssets: list[index].itemSvg,
-      onPressed: list[index].ontapRoutes,
-      titleText: list[index].itemName,
-      svgColor: list[index].svgColor,
+      itemModel: list[index],
     );
   }
 }
