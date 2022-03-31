@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:ui_generator_app/Core/App_Color/app_color.dart';
-import 'package:ui_generator_app/Core/App_String/Skills_code.dart';
+import 'package:ui_generator_app/Core/App_String/skills_code.dart';
 import 'package:ui_generator_app/Presention/CustomeAppBar/custome_appbar.dart';
 
 Color randomColor() {

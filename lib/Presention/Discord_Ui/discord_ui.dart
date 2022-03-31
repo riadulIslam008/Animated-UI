@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ui_generator_app/Core/App_Color/app_color.dart';
 import 'package:ui_generator_app/Core/App_Icon/app_icon.dart';
-import 'package:ui_generator_app/Core/App_String/discorUI_code.dart';
+import 'package:ui_generator_app/Core/App_String/discorui_code.dart';
 import 'package:ui_generator_app/Presention/CustomeAppBar/custome_appbar.dart';
 
 class DiscordUI extends StatefulWidget {
