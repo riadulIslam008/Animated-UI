@@ -4,33 +4,46 @@ import 'package:ui_generator_app/Core/App_Color/app_color.dart';
 import 'package:ui_generator_app/Core/App_Icon/app_icon.dart';
 import 'package:ui_generator_app/Core/App_Veriable/app_veriable.dart';
 import 'package:ui_generator_app/Presention/Homapage/Widgets/circle_and_svg.dart';
+import 'package:ui_generator_app/Presention/Homapage/Widgets/custom_end_drawer.dart';
 
 class Homepage extends StatefulWidget {
- const Homepage({Key? key}) : super(key: key);
+  const Homepage({Key? key}) : super(key: key);
 
   @override
   State<Homepage> createState() => _HomepageState();
 }
+
+var scaffoldKey = GlobalKey<ScaffoldState>();
 
 class _HomepageState extends State<Homepage> {
   final pageFlipKey = GlobalKey<PageFlipBuilderState>();
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: AppColor.blurGrey,
-        body: PageFlipBuilder(
-          key: pageFlipKey,
-          frontBuilder: (_) => FlipPage(
-            key:const ValueKey(1),
-            list: AppVeriable.itemListOne,
-            onFlip: () => pageFlipKey.currentState?.flip(),
-          ),
-          backBuilder: (_) => FlipPage(
-            key: const ValueKey(2),
-            list: AppVeriable.itemListTwo,
-            onFlip: () => pageFlipKey.currentState?.flip(),
+    return Center(
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width > 400
+            ? 400
+            : MediaQuery.of(context).size.width,
+        child: Scaffold(
+          key: scaffoldKey,
+          endDrawerEnableOpenDragGesture: false,
+          endDrawer: const CustomEndDrawer(),
+          backgroundColor: AppColor.blurGrey,
+          body: SafeArea(
+            child: PageFlipBuilder(
+              key: pageFlipKey,
+              frontBuilder: (_) => FlipPage(
+                key: const ValueKey(1),
+                list: AppVeriable.itemListOne,
+                onFlip: () => pageFlipKey.currentState?.flip(),
+              ),
+              backBuilder: (_) => FlipPage(
+                key: const ValueKey(2),
+                list: AppVeriable.itemListTwo,
+                onFlip: () => pageFlipKey.currentState?.flip(),
+              ),
+            ),
           ),
         ),
       ),
@@ -59,13 +72,6 @@ class FlipPage extends StatelessWidget {
                   rowSection(0, 1),
                   rowSection(2, 3),
                   rowSection(4, 5),
-                ] else ...[
-                  rowSection(0, 1),
-                  rowSection(2, 3),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15 ),
-                    child: circleIndex(4),
-                  ),
                 ],
               ],
             ),

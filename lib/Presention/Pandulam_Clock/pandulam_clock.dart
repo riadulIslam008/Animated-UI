@@ -55,60 +55,68 @@ class _PandulamClockState extends State<PandulamClock>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColor.pandulamPageBackground, //Color(0xFF202F41),
-      appBar:  const CustomeAppBar(
-         uiCode: PandulamCode.pandulamAllCode,
-       ),
-      body: Stack(
-        alignment: Alignment.center,
-        children: [
-          Column(
-            children: [
-              SizedBox(height: _top),
-              Transform(
-                alignment: const FractionalOffset(0.5, 0.0),
-                transform: Matrix4.rotationZ(animation.value),
-                child: const Center(
-                  child: PandulamUI(screenHeight: 160),
-                ),
-              ),
-            ],
+    return Center(
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width > 400
+            ? 400
+            : MediaQuery.of(context).size.width,
+        child: Scaffold(
+          extendBodyBehindAppBar: true,
+          backgroundColor: AppColor.pandulamPageBackground, //Color(0xFF202F41),
+          appBar: const CustomeAppBar(
+            uiCode: PandulamCode.pandulamAllCode,
           ),
-          Center(
-            child: CircleAvatar(
-              backgroundColor: const Color(0xFF202F41),
-              radius: 73,
-              child: Stack(
+          body: Stack(
+            alignment: Alignment.center,
+            children: [
+              Column(
                 children: [
-                  Container(
-                    alignment: Alignment.topCenter,
-                    child: Text("12", style: _style),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.only(right: 5),
-                    alignment: Alignment.centerRight,
-                    child: Text("3", style: _style),
-                  ),
-                  Container(
-                    alignment: Alignment.bottomCenter,
-                    child: Text("6", style: _style),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.only(left: 5),
-                    alignment: Alignment.centerLeft,
-                    child: Text("9", style: _style),
+                  SizedBox(height: _top),
+                  Transform(
+                    alignment: const FractionalOffset(0.5, 0.0),
+                    transform: Matrix4.rotationZ(animation.value),
+                    child: const Center(
+                      child: PandulamUI(screenHeight: 160),
+                    ),
                   ),
                 ],
               ),
-            ),
+              Center(
+                child: CircleAvatar(
+                  backgroundColor: const Color(0xFF202F41),
+                  radius: 73,
+                  child: Stack(
+                    children: [
+                      Container(
+                        alignment: Alignment.topCenter,
+                        child: Text("12", style: _style),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.only(right: 5),
+                        alignment: Alignment.centerRight,
+                        child: Text("3", style: _style),
+                      ),
+                      Container(
+                        alignment: Alignment.bottomCenter,
+                        child: Text("6", style: _style),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.only(left: 5),
+                        alignment: Alignment.centerLeft,
+                        child: Text("9", style: _style),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Center(
+                child: Container(
+                    alignment: const FractionalOffset(0.5, 0.5),
+                    child: const ClockUI()),
+              ),
+            ],
           ),
-          Center(
-            child: Container(
-                alignment: const FractionalOffset(0.5, 0.5),
-                child: const ClockUI()),
-          ),
-        ],
+        ),
       ),
     );
   }

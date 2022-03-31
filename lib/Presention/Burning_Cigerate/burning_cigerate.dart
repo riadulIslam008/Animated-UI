@@ -43,36 +43,44 @@ class _BurningCigerateState extends State<BurningCigerate> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color.fromRGBO(0, 0, 0, 0.50),
-      appBar: const CustomeAppBar(
-        uiCode: BurningCigerette.code,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.only(left: 8.0),
-        child: Transform(
-          alignment: Alignment.center,
-          transform: Matrix4.rotationZ(50),
-          child: Center(
-            child: ListWheelScrollView.useDelegate(
-              controller: _controller,
-              physics: const AlwaysScrollableScrollPhysics(),
-              itemExtent: 80,
-              perspective: 0.007,
-              diameterRatio: 0.1,
-              onSelectedItemChanged: (index) {
-                index++;
-              },
-              childDelegate: ListWheelChildLoopingListDelegate(
-                children: [
-                  for (var i = 0; i < 10; i++)
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const <Widget>[
-                        CigareteView(),
-                      ],
-                    ),
-                ],
+    return Center(
+      child: SizedBox(
+         width: MediaQuery.of(context).size.width > 400
+            ? 400
+            : MediaQuery.of(context).size.width,
+        child: Scaffold(
+          extendBodyBehindAppBar: true,
+          backgroundColor: const Color.fromRGBO(0, 0, 0, 0.50),
+          appBar: const CustomeAppBar(
+            uiCode: BurningCigerette.code,
+          ),
+          body: Padding(
+            padding: const EdgeInsets.only(left: 8.0),
+            child: Transform(
+              alignment: Alignment.center,
+              transform: Matrix4.rotationZ(50),
+              child: Center(
+                child: ListWheelScrollView.useDelegate(
+                  controller: _controller,
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  itemExtent: 80,
+                  perspective: 0.007,
+                  diameterRatio: 0.1,
+                  onSelectedItemChanged: (index) {
+                    index++;
+                  },
+                  childDelegate: ListWheelChildLoopingListDelegate(
+                    children: [
+                      for (var i = 0; i < 10; i++)
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const <Widget>[
+                            CigareteView(),
+                          ],
+                        ),
+                    ],
+                  ),
+                ),
               ),
             ),
           ),

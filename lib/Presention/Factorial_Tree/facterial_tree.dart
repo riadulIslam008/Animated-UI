@@ -8,24 +8,34 @@ class FacterialTree extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black87,
-       appBar:  const CustomeAppBar(
-         uiCode: Factorial.code,
-       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,         
-        children: [
-          Flexible(
-            flex: 1,
-            child: AspectRatio(
-              aspectRatio: 1,
-              child: CustomPaint(
-                painter: TreePaint(),
-              ),
+    return Center(
+      child: SizedBox(
+         width: MediaQuery.of(context).size.width > 400
+            ? 400
+            : MediaQuery.of(context).size.width,
+        child: Scaffold(
+          extendBodyBehindAppBar: true,
+          backgroundColor: Colors.black87,
+           appBar:  const CustomeAppBar(
+             uiCode: Factorial.code,
+           ),
+          body: SafeArea(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,         
+              children: [
+                Flexible(
+                  flex: 1,
+                  child: AspectRatio(
+                    aspectRatio: 1,
+                    child: CustomPaint(
+                      painter: TreePaint(),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
-        ],
+        ),
       ),
     );
   }

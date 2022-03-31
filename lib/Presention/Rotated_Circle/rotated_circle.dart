@@ -71,28 +71,36 @@ class _RotatedCircleState extends State<RotatedCircle>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColor.blurGrey,
-       appBar:  const CustomeAppBar(
-         uiCode: Fency.code,
-       ),
-      body: Center(
-        child: SizedBox(
-          width: _height,
-          height: _height,
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              FencyBorder(
-                controller: controllerOne,
+    return Center(
+      child: SizedBox(
+           width: MediaQuery.of(context).size.width > 400
+              ? 400
+              : MediaQuery.of(context).size.width,
+        child: Scaffold(
+          extendBodyBehindAppBar: true,
+          backgroundColor: AppColor.blurGrey,
+           appBar:  const CustomeAppBar(
+             uiCode: Fency.code,
+           ),
+          body: Center(
+            child: SizedBox(
+              width: _height,
+              height: _height,
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  FencyBorder(
+                    controller: controllerOne,
+                  ),
+                  FencyBorder(
+                    controller: controllerTwo,
+                  ),
+                  FencyBorder(
+                    controller: controllerThree,
+                  ),
+                ],
               ),
-              FencyBorder(
-                controller: controllerTwo,
-              ),
-              FencyBorder(
-                controller: controllerThree,
-              ),
-            ],
+            ),
           ),
         ),
       ),

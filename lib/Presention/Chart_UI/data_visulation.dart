@@ -30,45 +30,53 @@ class _CircularDataVisulationState extends State<CircularDataVisulation>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-       appBar:  const CustomeAppBar(
-         uiCode: ChartUI.code,
-       ),
-      body: Center(
-        child: LayoutBuilder(builder: (context, constraints) {
-          return AnimatedBuilder(
-              animation: animationController,
-              builder: (context, child) {
-                return Container(
-                  alignment: Alignment.center,
-                  child: Container(
-                    height: constraints.maxHeight * 0.40,
-                    width: constraints.maxWidth * 0.40,
-                    decoration: const BoxDecoration(
-                      color: Color.fromRGBO(193, 214, 233, 1),
-                      shape: BoxShape.circle,
-                      boxShadow: [
-                        BoxShadow(
-                          spreadRadius: -10,
-                          blurRadius: 17,
-                          color: Colors.white,
-                          offset: Offset(-5, -5),
+    return Center(
+      child: SizedBox(
+         width: MediaQuery.of(context).size.width > 400
+            ? 400
+            : MediaQuery.of(context).size.width,
+        child: Scaffold(
+          extendBodyBehindAppBar: true,
+           appBar:  const CustomeAppBar(
+             uiCode: ChartUI.code,
+           ),
+          body: Center(
+            child: LayoutBuilder(builder: (context, constraints) {
+              return AnimatedBuilder(
+                  animation: animationController,
+                  builder: (context, child) {
+                    return Container(
+                      alignment: Alignment.center,
+                      child: Container(
+                        height: constraints.maxHeight * 0.40,
+                        width: constraints.maxWidth * 0.40,
+                        decoration: const BoxDecoration(
+                          color: Color.fromRGBO(193, 214, 233, 1),
+                          shape: BoxShape.circle,
+                          boxShadow: [
+                            BoxShadow(
+                              spreadRadius: -10,
+                              blurRadius: 17,
+                              color: Colors.white,
+                              offset: Offset(-5, -5),
+                            ),
+                            BoxShadow(
+                              spreadRadius: -2,
+                              blurRadius: 10,
+                              offset: Offset(7, 7),
+                              color: Color.fromRGBO(146, 182, 216, 1),
+                            ),
+                          ],
                         ),
-                        BoxShadow(
-                          spreadRadius: -2,
-                          blurRadius: 10,
-                          offset: Offset(7, 7),
-                          color: Color.fromRGBO(146, 182, 216, 1),
+                        child: CustomPaint(
+                          painter: PieChart(animationController.value),
                         ),
-                      ],
-                    ),
-                    child: CustomPaint(
-                      painter: PieChart(animationController.value),
-                    ),
-                  ),
-                );
-              });
-        }),
+                      ),
+                    );
+                  });
+            }),
+          ),
+        ),
       ),
     );
   }

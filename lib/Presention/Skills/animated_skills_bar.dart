@@ -110,26 +110,34 @@ class _SkillsBarListState extends State<SkillsBarList>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColor.skillsBackGroundColor,
-       appBar: const CustomeAppBar(
-         uiCode: Skills.code,
-       ),
-      body: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            AnimatedBox(
-              controller: animationControllerOne,
-              color: colorOne,
+    return Center(
+      child: SizedBox(
+           width: MediaQuery.of(context).size.width > 400
+              ? 400
+              : MediaQuery.of(context).size.width,
+        child: Scaffold(
+          extendBodyBehindAppBar: true,
+          backgroundColor: AppColor.skillsBackGroundColor,
+           appBar: const CustomeAppBar(
+             uiCode: Skills.code,
+           ),
+          body: Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                AnimatedBox(
+                  controller: animationControllerOne,
+                  color: colorOne,
+                ),
+                AnimatedBox(controller: animationControllerTwo, color: colorTwo),
+                AnimatedBox(
+                  controller: animationControllerThree,
+                  color: colorThree,
+                ),
+                AnimatedBox(controller: animationControllerFour, color: colorFour),
+              ],
             ),
-            AnimatedBox(controller: animationControllerTwo, color: colorTwo),
-            AnimatedBox(
-              controller: animationControllerThree,
-              color: colorThree,
-            ),
-            AnimatedBox(controller: animationControllerFour, color: colorFour),
-          ],
+          ),
         ),
       ),
     );

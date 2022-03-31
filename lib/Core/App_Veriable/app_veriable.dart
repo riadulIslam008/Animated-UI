@@ -74,5 +74,11 @@ class AppVeriable {
       itemSvg: AppAssets.allIcons[10],
       ontapRoutes: Routes.rotatedCircle,
     ),
+     ItemModel(
+      itemName: "rate this app",
+      svgColor: AppColor.transparent,
+      itemSvg: AppAssets.allIcons[11],
+      ontapRoutes: "",
+    ),
   ];
 }

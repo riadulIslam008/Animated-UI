@@ -8,37 +8,45 @@ class Button3d extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColor.buttonBackground,
-      appBar: const CustomeAppBar(
-        uiCode: Button.code,
-      ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15.0),
-          child: Wrap(
-            spacing: 15,
-            runSpacing: 20,
-            children: [
-              const ButtonUI(
-                letter: "V",
+    return Center(
+      child: SizedBox(
+           width: MediaQuery.of(context).size.width > 400
+              ? 400
+              : MediaQuery.of(context).size.width,
+        child: Scaffold(
+          extendBodyBehindAppBar: true,
+          backgroundColor: AppColor.buttonBackground,
+          appBar: const CustomeAppBar(
+            uiCode: Button.code,
+          ),
+          body: Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15.0),
+              child: Wrap(
+                spacing: 15,
+                runSpacing: 20,
+                children: [
+                  const ButtonUI(
+                    letter: "V",
+                  ),
+                  const ButtonUI(
+                    letter: "W",
+                  ),
+                  const ButtonUI(
+                    letter: "X",
+                  ),
+                  const ButtonUI(
+                    letter: "Y",
+                  ),
+                  const ButtonUI(
+                    letter: "Z",
+                  ),
+                  ButtonUI(
+                    width: MediaQuery.of(context).size.width,
+                  ),
+                ],
               ),
-              const ButtonUI(
-                letter: "W",
-              ),
-              const ButtonUI(
-                letter: "X",
-              ),
-              const ButtonUI(
-                letter: "Y",
-              ),
-              const ButtonUI(
-                letter: "Z",
-              ),
-              ButtonUI(
-                width: MediaQuery.of(context).size.width,
-              ),
-            ],
+            ),
           ),
         ),
       ),

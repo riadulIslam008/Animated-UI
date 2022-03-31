@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:ui_generator_app/Core/App_Color/app_color.dart';
 import 'package:ui_generator_app/Core/Model/item_model.dart';
 import 'package:ui_generator_app/Presention/Homapage/Widgets/custom_painter.dart';
+import 'package:ui_generator_app/Presention/Homapage/home_page.dart';
 
 class CircleWithSvg extends StatefulWidget {
   const CircleWithSvg({
@@ -40,7 +41,13 @@ class _CircleWithSvgState extends State<CircleWithSvg>
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Get.toNamed(widget.itemModel.ontapRoutes),
+      onTap: () {
+        if (widget.itemModel.itemName == "rate this app") {
+          scaffoldKey.currentState!.openEndDrawer();
+        } else {
+          Get.toNamed(widget.itemModel.ontapRoutes);
+        }
+      },
       onLongPressDown: (_) {
         animationController.forward();
       },
@@ -55,7 +62,9 @@ class _CircleWithSvgState extends State<CircleWithSvg>
         }
       },
       child: SizedBox(
-        width: Get.width * 0.40,
+        width: MediaQuery.of(context).size.width > 400
+            ? 400 * 0.40
+            : MediaQuery.of(context).size.width * 0.40,
         child: AnimatedBuilder(
           animation: animationController,
           builder: (context, child) => Column(
